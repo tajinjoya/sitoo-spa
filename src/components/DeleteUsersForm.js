@@ -51,7 +51,10 @@ const DeleteUsersForm = (props) => {
       })
       .catch(error => {
         console.log('error fetching and parsing data', error);
-        notifyError('Error in deleting user: ' + fullName);
+        const errorCode = error.response.status;
+        let message = errorCode !== 400 ? 'Error in deleting user: ' + fullName : 
+        'Bad Request. Invalid syntax, missing required argument or invalid request.';
+        notifyError(message);
       });
   } 
 

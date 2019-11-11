@@ -65,7 +65,10 @@ const UpdateUserForm = (props) => {
       })
       .catch(error => {
         console.log('error fetching and parsing data', error);
-        notifyError('Error in updating user');
+        const errorCode = error.response.status;
+        let message = errorCode !== 400 ? 'Error in updating user' : 
+        'Bad Request. Invalid syntax, missing required argument or invalid request.';
+        notifyError(message);
       })
   }
   
