@@ -120,20 +120,21 @@ function UserList() {
 
 
   return ( 
-    <div className='container mt-5'>
+    <div className="table-responsive">
       <SpecialTable
         data={{
           headings: ['', 'Name', 'Email', 'Created At', 'Modified At', ''],
           values: currentUsers,
         }}
       />
-        
-      <Button className="button" variant="primary" onClick={handleShowAddUser}>
+    
+      <Button  className="button" variant="primary" onClick={handleShowAddUser}>
         Add User
       </Button>
       <Button className="button" variant="danger" onClick={handleShowDeleteUsers}>
         Delete Selected
       </Button>
+  
  
       <AddUserForm show={showAddUser} close={handleCloseAddUser}/>
       <UpdateUserForm user={user} close={handleCloseUpdateUser}/>

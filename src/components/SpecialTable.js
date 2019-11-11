@@ -5,11 +5,14 @@ import styled from 'styled-components';
 const StyledTable = styled.table`
   width: inherit;
   color: white;
-  text-align: left;
+  text-align: center;
+  margin: 0 auto;
+
+  
 `;
 
 const StyledThead = styled.thead`
-  background-color: #a77efd;
+   background: #333; 
   font-size: 16px;
   @media only screen and (min-width: 768px) {
     font-size: 20px;
@@ -80,6 +83,7 @@ const SpecialTable = ({ data }) => (
         ))}
     </StyledTbody>
   </StyledTable>
+
 );
 
 SpecialTable.defaultProps = {

@@ -2,10 +2,8 @@ import React from 'react';
 
 const Products = () => (
   <div>
-    <h2>Products page!</h2>
+    <h4>Products page!</h4>
   </div>
 )
-
-
 
 export default Products;

@@ -46,7 +46,7 @@ const AddUserForm = (props) => {
       })
       .catch(error => {
         console.log('error fetching and parsing data', error);
-      })
+      });
   }
 
 

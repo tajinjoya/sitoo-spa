@@ -2,7 +2,7 @@ import React from 'react';
 
 const Manufacturers = () => (
   <div>
-    <h2>Manufacturers page!</h2>
+    <h4>Manufacturers page!</h4>
   </div>
 )
 

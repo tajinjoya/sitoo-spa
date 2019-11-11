@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const DeleteUsersForm = (props) => {
 
-  const show = props.ids != null && props.ids.length != 0;
+  const show = props.ids !== null && props.ids.length !== 0;
 
   const handleSubmit = event => {
     console.log('handleSubmit');
@@ -21,7 +21,8 @@ const DeleteUsersForm = (props) => {
   const handleClose = props.close;
 
   const deleteUser = (id) => {
-    const url = 'http://localhost:8088/https://api-sandbox.mysitoo.com/v2/accounts/90316/sites/1/users/'+ id + '.json';
+    console.log('Id to delete: ' + id);
+    const url = 'http://localhost:8088/https://api-sandbox.mysitoo.com/v2/accounts/90316/sites/1/users/' + id + '.json';
 
     const config = {
       "headers": {
@@ -35,17 +36,14 @@ const DeleteUsersForm = (props) => {
       })
       .catch(error => {
         console.log('error fetching and parsing data', error);
-      })
+      });
   } 
 
   const deleteUsers = (ids) => {
-
     ids.forEach(id => {
       deleteUser(id);
     });
   }
-    
-
 
   return ( 
     <Modal show={show} onHide={handleClose}>

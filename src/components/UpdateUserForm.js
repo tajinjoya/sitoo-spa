@@ -19,7 +19,6 @@ const AddUserForm = (props) => {
     const firstName = form.elements.firstname.value;
     const lastName = form.elements.lastname.value;
     const email = form.elements.email.value;
-    console.log(props.user.userid);
     event.preventDefault();
     event.stopPropagation();
     updateUser(firstName, lastName, email, props.user.userid);
@@ -31,27 +30,9 @@ const AddUserForm = (props) => {
     console.log('firstName: ' + firstName);
     console.log('lastName: ' + lastName);
     console.log('email: ' + email);
+    console.log('id: ' + id);
 
-    const superEncodeURI = url => {
-      console.log(url);
-      var encodedStr = '', encodeChars = ["(", ")"];
-      url = encodeURI(url);
-    
-      for(var i = 0, len = url.length; i < len; i++) {
-        if (encodeChars.indexOf(url[i]) >= 0) {
-            var hex = parseInt(url.charCodeAt(i)).toString(16);
-            encodedStr += '%' + hex;
-        }
-        else {
-            encodedStr += url[i];
-        }
-      }
-      console.log(encodedStr);
-
-      return encodedStr;
-    }
-
-    const url = 'http://localhost:8088/https://api-sandbox.mysitoo.com/v2/accounts/90316/sites/1/users/'+ id + '.json';
+    const url = 'http://localhost:8088/https://api-sandbox.mysitoo.com/v2/accounts/90316/sites/1/users/' + id + '.json';
 
     const body = {
       'email': email,
@@ -64,7 +45,6 @@ const AddUserForm = (props) => {
         "Authorization": 'Basic OTAzMTYtMTI1OnBmWDBZN0EyVFlBbFo1NzFJS0VPN0FLb1h6YTZZbHZzUDhrS3ZBdTM=',
       }
     };
-    console.log(url);
     axios.put(url, body, config)
       .then(response => {
         console.log(response);
