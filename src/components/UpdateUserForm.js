@@ -4,14 +4,24 @@ import {
   Button,
   Modal,
 } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const UpdateUserForm = (props) => {
 
   const firstName = props.user == null ? "" : props.user.namefirst;
   const lastName = props.user == null ? "" : props.user.namelast;
   const email = props.user == null ? "" : props.user.email;
+
+  const notifySuccess = (text) => {
+    toast.success(text);
+  }
+
+  const notifyError = (text) => {
+    toast.error(text);
+  }
 
   const handleSubmit = event => {
     console.log('handleSubmit');
@@ -48,10 +58,14 @@ const UpdateUserForm = (props) => {
     axios.put(url, body, config)
       .then(response => {
         console.log(response);
-        handleClose();
+        notifySuccess('User updated');
+        setTimeout(() => {
+          handleClose();
+        }, 3000);
       })
       .catch(error => {
         console.log('error fetching and parsing data', error);
+        notifyError('Error in updating user');
       })
   }
   
@@ -74,6 +88,17 @@ const UpdateUserForm = (props) => {
               <Form.Label>Email</Form.Label>
               <Form.Control required type="email" name="email" defaultValue={email} placeholder="Enter Email" />
             </Form.Group>
+            <ToastContainer
+              position="top-center"
+              autoClose={3000}
+              hideProgressBar
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnVisibilityChange
+              draggable
+              pauseOnHover
+            />
             <Button variant="secondary" onClick={props.close}>
               Cancel
             </Button>

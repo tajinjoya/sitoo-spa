@@ -4,8 +4,10 @@ import {
   Button,
   Modal,
 } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const AddUserForm = (props) => {
   const handleSubmit = event => {
@@ -18,6 +20,14 @@ const AddUserForm = (props) => {
     event.stopPropagation();
     addUser(firstName, lastName, email);
   };
+
+  const notifySuccess = (text) => {
+    toast.success(text);
+  }
+
+  const notifyError = (text) => {
+    toast.error(text);
+  }
 
   const handleClose = props.close;
 
@@ -42,10 +52,14 @@ const AddUserForm = (props) => {
     axios.post(url, body, config)
       .then(response => {
         console.log(response);
-        handleClose();
+        notifySuccess('User added');
+        setTimeout(() => {
+          handleClose();
+        }, 3000);
       })
       .catch(error => {
         console.log('error fetching and parsing data', error);
+        notifyError('Error in adding user');
       });
   }
 
@@ -69,6 +83,17 @@ const AddUserForm = (props) => {
               <Form.Label>Email</Form.Label>
               <Form.Control required type="email" name="email" placeholder="Enter Email" />
             </Form.Group>
+            <ToastContainer
+              position="top-center"
+              autoClose={3000}
+              hideProgressBar
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnVisibilityChange
+              draggable
+              pauseOnHover
+            />
             <Button variant="secondary" onClick={props.close}>
               Cancel
             </Button>

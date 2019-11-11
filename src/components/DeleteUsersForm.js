@@ -4,8 +4,10 @@ import {
   Button,
   Modal,
 } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const DeleteUsersForm = (props) => {
 
@@ -18,11 +20,21 @@ const DeleteUsersForm = (props) => {
     deleteUsers(props.users);
   };
 
+  const notifySuccess = (text) => {
+    toast.success(text);
+  }
+
+  const notifyError = (text) => {
+    toast.error(text);
+  }
+
   const handleClose = props.close;
 
   const deleteUser = (user) => {
-    console.log('Id to delete: ' + user.id);
-    const url = 'http://localhost:8088/https://api-sandbox.mysitoo.com/v2/accounts/90316/sites/1/users/' + user.id + '.json';
+    const fullName = user.namefirst + ' ' + user.namelast;
+    const userId = user.userid;
+    console.log('Id to delete: ' + userId);
+    const url = 'http://localhost:8088/https://api-sandbox.mysitoo.com/v2/accounts/90316/sites/1/users/' + userId + '.json';
 
     const config = {
       "headers": {
@@ -32,10 +44,14 @@ const DeleteUsersForm = (props) => {
     axios.delete(url, config)
       .then(response => {
         console.log(response);
-        handleClose();
+        notifySuccess('User ' + fullName + ' is deleted');
+        setTimeout(() => {
+          handleClose();
+        }, 3000);
       })
       .catch(error => {
         console.log('error fetching and parsing data', error);
+        notifyError('Error in deleting user: ' + fullName);
       });
   } 
 
@@ -64,6 +80,17 @@ const DeleteUsersForm = (props) => {
           <Form.Group controlId="Names">
             <Form.Label className='list'>{listUsers(props.users)}</Form.Label>
           </Form.Group>
+          <ToastContainer
+              position="top-center"
+              autoClose={3000}
+              hideProgressBar
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnVisibilityChange
+              draggable
+              pauseOnHover
+            />
           <Form onSubmit={handleSubmit}>
             <Button variant="secondary" onClick={props.close}>
               Cancel
