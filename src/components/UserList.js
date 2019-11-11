@@ -120,7 +120,7 @@ function UserList() {
 
 
   return ( 
-    <div className="col-7">
+    <div className="col-12">
       <SpecialTable
         data={{
           headings: ['', 'Name', 'Email', 'Created At', 'Modified At', ''],

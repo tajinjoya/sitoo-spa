@@ -73,7 +73,7 @@ const UpdateUserForm = (props) => {
   }
   
   return ( 
-    <Modal show={props.user != null} onHide={handleClose} className="col-7">
+    <Modal show={props.user !== null} onHide={handleClose} className="col-5">
         <Modal.Header closeButton>
           <Modal.Title>Update User</Modal.Title>
         </Modal.Header>
