@@ -64,6 +64,10 @@
     overflow-x: auto;
   }
 
+  .list {
+    margin-left: 20px;
+  }
+
   @media screen and (max-width: 620px) {
     .table-responsive {
       width: 100%;

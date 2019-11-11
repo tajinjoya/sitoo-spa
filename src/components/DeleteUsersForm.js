@@ -9,20 +9,20 @@ import axios from 'axios';
 
 const DeleteUsersForm = (props) => {
 
-  const show = props.ids !== null && props.ids.length !== 0;
+  const show = props.users !== null && props.users.length !== 0;
 
   const handleSubmit = event => {
     console.log('handleSubmit');
     event.preventDefault();
     event.stopPropagation();
-    deleteUsers(props.ids);
+    deleteUsers(props.users);
   };
 
   const handleClose = props.close;
 
-  const deleteUser = (id) => {
-    console.log('Id to delete: ' + id);
-    const url = 'http://localhost:8088/https://api-sandbox.mysitoo.com/v2/accounts/90316/sites/1/users/' + id + '.json';
+  const deleteUser = (user) => {
+    console.log('Id to delete: ' + user.id);
+    const url = 'http://localhost:8088/https://api-sandbox.mysitoo.com/v2/accounts/90316/sites/1/users/' + user.id + '.json';
 
     const config = {
       "headers": {
@@ -39,10 +39,20 @@ const DeleteUsersForm = (props) => {
       });
   } 
 
-  const deleteUsers = (ids) => {
-    ids.forEach(id => {
-      deleteUser(id);
+  const deleteUsers = (users) => {
+    users.forEach(user => {
+      deleteUser(user);
     });
+  }
+
+  const listUsers = (users) => {
+    return (
+      <ul>
+        {users.map((user, index) => {
+          return <li key={index}>{user.namefirst} {user.namelast}</li>
+        })}
+      </ul>
+    )
   }
 
   return ( 
@@ -51,6 +61,9 @@ const DeleteUsersForm = (props) => {
           <Modal.Title>Delete Selected Users</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <Form.Group controlId="Names">
+            <Form.Label className='list'>{listUsers(props.users)}</Form.Label>
+          </Form.Group>
           <Form onSubmit={handleSubmit}>
             <Button variant="secondary" onClick={props.close}>
               Cancel

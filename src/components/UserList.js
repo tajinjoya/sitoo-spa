@@ -61,7 +61,7 @@ function UserList() {
     let values = [];
     for (var i = 0; i < ids.length; i++) {
       if (ids[i].checked) {
-        values.push(ids[i].value);
+        values.push(userList[i]);
       }
     }
     console.log(values);
@@ -83,7 +83,7 @@ function UserList() {
   console.log(userList);
 
 
-  const users = userList.map((user) => {
+  const users = userList.map((user, index) => {
     let createdDate = new Date(user.datecreated);
     let modifiedDate = new Date(user.datemodified);
 
@@ -94,7 +94,7 @@ function UserList() {
     let modifiedDateMonth = shortMonth(modifiedDate);
     let modifiedDateTime = formatAMPM(modifiedDate);
     return [ 
-      <input type="checkbox" name="id" value={user.userid}/>,
+      <input type="checkbox" name="id" value={index}/>,
       userFullName,
       user.email,
       `${createdDate.getDate()} ${createdDateMonth}, ${createdDateTime} (${createdDate.getFullYear()})`,
@@ -138,7 +138,7 @@ function UserList() {
  
       <AddUserForm show={showAddUser} close={handleCloseAddUser}/>
       <UpdateUserForm user={user} close={handleCloseUpdateUser}/>
-      <DeleteUsersForm ids={userIdsToDelete} close={handleCloseDeleteUsers}/>
+      <DeleteUsersForm users={userIdsToDelete} close={handleCloseDeleteUsers}/>
 
       <Pagination
         postsPerPage={usersPerPage}
