@@ -68,7 +68,7 @@ const AddUserForm = (props) => {
 
 
   return ( 
-    <Modal show={props.show} onHide={handleClose}>
+    <Modal show={props.show} onHide={handleClose} className="col-7">
         <Modal.Header closeButton>
           <Modal.Title>Add User</Modal.Title>
         </Modal.Header>
@@ -97,10 +97,10 @@ const AddUserForm = (props) => {
               draggable
               pauseOnHover
             />
-            <Button variant="secondary" onClick={props.close}>
+            <Button className="button" variant="secondary" onClick={props.close}>
               Cancel
             </Button>
-            <Button variant="primary" type="submit">
+            <Button className="button" variant="primary" type="submit">
               Save 
             </Button>
           </Form>

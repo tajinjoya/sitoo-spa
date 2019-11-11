@@ -73,7 +73,7 @@ const UpdateUserForm = (props) => {
   }
   
   return ( 
-    <Modal show={props.user != null} onHide={handleClose}>
+    <Modal show={props.user != null} onHide={handleClose} className="col-7">
         <Modal.Header closeButton>
           <Modal.Title>Update User</Modal.Title>
         </Modal.Header>
@@ -102,10 +102,10 @@ const UpdateUserForm = (props) => {
               draggable
               pauseOnHover
             />
-            <Button variant="secondary" onClick={props.close}>
+            <Button className="button" variant="secondary" onClick={props.close}>
               Cancel
             </Button>
-            <Button variant="primary" type="submit">
+            <Button className="button" variant="primary" type="submit">
               Save 
             </Button>
           </Form>

@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Manufacturers = () => (
-  <div>
-    <h4>Manufacturers page!</h4>
+  <div className="col-8">
+    <h4 className="center">Manufacturers page!</h4>
   </div>
 )
 

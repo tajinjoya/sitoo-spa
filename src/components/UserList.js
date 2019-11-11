@@ -120,7 +120,7 @@ function UserList() {
 
 
   return ( 
-    <div className="table-responsive">
+    <div className="col-7">
       <SpecialTable
         data={{
           headings: ['', 'Name', 'Email', 'Created At', 'Modified At', ''],

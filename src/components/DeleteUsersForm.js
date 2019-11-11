@@ -75,7 +75,7 @@ const DeleteUsersForm = (props) => {
   }
 
   return ( 
-    <Modal show={show} onHide={handleClose}>
+    <Modal show={show} onHide={handleClose} className="col-7">
         <Modal.Header closeButton>
           <Modal.Title>Delete Selected Users</Modal.Title>
         </Modal.Header>
@@ -95,10 +95,10 @@ const DeleteUsersForm = (props) => {
               pauseOnHover
             />
           <Form onSubmit={handleSubmit}>
-            <Button variant="secondary" onClick={props.close}>
+            <Button className="button" variant="secondary" onClick={props.close}>
               Cancel
             </Button>
-            <Button variant="primary" type="submit">
+            <Button className="button" variant="primary" type="submit">
               Confirm Deletion 
             </Button>
           </Form>

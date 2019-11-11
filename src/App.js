@@ -12,7 +12,7 @@ import { BrowserRouter,
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="App col-12">
         <Header />
         <Navbar />
         <Route exact path="/" render={() => <UserList />}/>

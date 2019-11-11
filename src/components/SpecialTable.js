@@ -12,7 +12,7 @@ const StyledTable = styled.table`
 `;
 
 const StyledThead = styled.thead`
-   background: #333; 
+  background: #333; 
   font-size: 16px;
   @media only screen and (min-width: 768px) {
     font-size: 20px;
