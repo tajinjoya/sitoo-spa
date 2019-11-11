@@ -7,7 +7,7 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
-const AddUserForm = (props) => {
+const UpdateUserForm = (props) => {
 
   const firstName = props.user == null ? "" : props.user.namefirst;
   const lastName = props.user == null ? "" : props.user.namelast;
@@ -90,4 +90,4 @@ const AddUserForm = (props) => {
 
 
 
-export default AddUserForm;
+export default UpdateUserForm;
