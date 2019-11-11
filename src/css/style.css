@@ -12,7 +12,6 @@
 
   .App {
     background-color: #fff;
-    min-width: 922px;
     margin: auto;
   }
 
@@ -21,11 +20,13 @@
     border-bottom: 1px solid gray;
     background: #333;
     padding: 10px 20px;
+    min-width: 500px;
   }
 
   .nav-menu li {
     display: inline-block;
     list-style: none;
+    margin-left: 10px;
   }
 
   .nav-menu__link {
@@ -57,11 +58,7 @@
     display: flex;
     justify-content: space-between;
     margin: 10px;
-  }
-
-  .table-responsive {
-    min-height: .01%;
-    overflow-x: auto;
+    font-size: 10px;
   }
 
   .list {
@@ -72,11 +69,8 @@
     text-align: center;
   }
 
-  @media screen and (max-width: 620px) {
-    .table-responsive {
-      width: 100%;
-      margin-bottom: 15px;
-    }
+  .pagination {
+    margin-left: 20px;
   }
 
   /* For mobile phones: */

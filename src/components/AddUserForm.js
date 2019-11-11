@@ -68,7 +68,7 @@ const AddUserForm = (props) => {
 
 
   return ( 
-    <Modal show={props.show} onHide={handleClose} className="col-5">
+    <Modal show={props.show} onHide={handleClose} className="col-8">
         <Modal.Header closeButton>
           <Modal.Title>Add User</Modal.Title>
         </Modal.Header>

@@ -75,7 +75,7 @@ const DeleteUsersForm = (props) => {
   }
 
   return ( 
-    <Modal show={show} onHide={handleClose} className="col-5">
+    <Modal show={show} onHide={handleClose} className="col-8">
         <Modal.Header closeButton>
           <Modal.Title>Delete Selected Users</Modal.Title>
         </Modal.Header>
